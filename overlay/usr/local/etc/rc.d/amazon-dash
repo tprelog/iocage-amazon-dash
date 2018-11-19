@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# PROVIDE: amazon-dash
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# amazondash_enable:	Set to YES to enable the amazon-dash service.
+#			Default: NO
+# amazondash_user:	The user account used to run the amazon-dash daemon.
+#			This is optional, however do not specifically set this to an
+#			empty string as this will cause the daemon to run as root.
+#			Default: USER_NAME
+# amazondash_group:	The group account used to run the amazon-dash daemon.
+#			This is optional, however do not specifically set this to an
+#			empty string as this will cause the daemon to run with group wheel.
+#			Default: USER_GROUP
+# amazondash_conf:	Path to amazon-dash.yml
+#			Default: ~/amazon-dash.yml
+# amazondash_arg: Use to set run options: "--root-allowed --ignore-perms"
+#           To set:   sysrc amazondash_arg="--ignore-perms --root-allowed"
+#           To clear: sysrc -x amazondash_arg
+#           Default: NONE
+#
+# Copy this file to: /usr/local/etc/rc.d/amazon-dash 
+# Make executable: chmod +x /usr/local/etc/rc.d/amazon-dash
+# sysrc amazondash_enable=YES      # to enable
+# service amazon-dash start        # to start
+#
+. /etc/rc.subr
+name=amazondash
+rcvar=${name}_enable
+
+pidfile_child="/var/run/${name}.pid"
+pidfile="/var/run/${name}_daemon.pid"
+
+load_rc_config ${name}
+: ${amazondash_enable:="NO"}
+: ${amazondash_user:="root"}
+: ${amazondash_group:="wheel"}
+: ${amazondash_config:="/etc/amazon-dash.yml"}
+: ${amazondash_arg:=""}
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+command="/usr/sbin/daemon"
+
+start_precmd=${name}_precmd
+amazondash_precmd()
+{
+    rc_flags="-f -u ${amazondash_user} -P ${pidfile} -p ${pidfile_child} /usr/local/bin/amazon-dash run ${amazondash_arg} --config ${amazondash_config} ${rc_flags}"
+
+    if [ ! -e "${pidfile_child}" ]; then
+            install -g ${amazondash_group} -o ${amazondash_user} -- /dev/null "${pidfile_child}";
+    fi
+
+    if [ ! -e "${pidfile}" ]; then
+            install -g ${amazondash_group} -o ${amazondash_user} -- /dev/null "${pidfile}";
+    fi
+}
+
+stop_postcmd=${name}_postcmd
+amazondash_postcmd()
+{
+    rm -f -- "${pidfile}"
+    rm -f -- "${pidfile_child}"
+}
+
+run_rc_command "$1"

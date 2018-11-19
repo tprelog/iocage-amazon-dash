@@ -1,0 +1,8 @@
+{
+    "pkgs": [
+    "devel/git",
+    "shells/bash",
+    "lang/python36",
+    "security/sudo"
+    ]
+} 

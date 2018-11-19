@@ -1,0 +1,19 @@
+------------------------------------------------------
+-------- Amazon-dash plugin for FreeNAS --------------
+
+- edit amazon-dash config file (service default):
+    ee /etc/amazon-dash.yml
+    
+- change config file location used by service:
+    sysrc amazondash_config="/root/amazon-dash.yml"
+
+- set optional run options used by service:
+    sysrc amazondash_arg="--ignore-perms --root-allowed"
+
+- remove optional run options used by service:
+    sysrc -x amazondash_arg
+
+- control amazon-dash service:
+    service amazon-dash [start|stop|restart|status]
+
+------------------------------------------------------
