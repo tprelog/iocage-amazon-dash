@@ -1,7 +1,7 @@
 {
   "name": "amazon-dash",                                                             
   "release": "11.2-RELEASE",                                                    
-  "artifact": "http://gitlab.local/troy/iocage-amazon-dash.git", 
+  "artifact": "https://github.com/tprelog/iocage-amazon-dash.git", 
   "pkgs": [
     "shells/bash",
     "lang/python36",

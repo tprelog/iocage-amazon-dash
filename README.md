@@ -8,7 +8,7 @@ Artifact file(s) for [Amazon-dash](http://docs.nekmo.org/amazon-dash/readme.html
 
 **Download plugin and install**
 
-    wget -O /tmp/amazon-dash.json http://gitlab.local/troy/iocage-amazon-dash/raw/master/amazon-dash.json
+    wget -O /tmp/amazon-dash.json https://raw.githubusercontent.com/tprelog/iocage-amazon-dash/master/amazon-dash.json
     sudo iocage fetch -P dhcp=on vnet=on bpf=yes -n /tmp/amazon-dash.json --branch 'master'
 
 ---
@@ -19,12 +19,12 @@ Artifact file(s) for [Amazon-dash](http://docs.nekmo.org/amazon-dash/readme.html
 
 **Download pkg-list and create a jail using it to install requirements**
 
-    wget -O /tmp/pkglist.json http://gitlab.local/troy/iocage-amazon-dash/raw/master/pkg-list.json
+    wget -O /tmp/pkglist.json https://raw.githubusercontent.com/tprelog/iocage-amazon-dash/master/pkg-list.json
     sudo iocage create -r 11.2-RELEASE boot=on dhcp=on bpf=yes vnet=on -p /tmp/pkglist.json -n amazon-dash
 
 **Git script and install**
 
-    sudo iocage exec amazon-dash git clone http://gitlab.local/troy/iocage-amazon-dash.git /root/.iocage-amazon-dash
+    sudo iocage exec amazon-dash git clone https://github.com/tprelog/iocage-amazon-dash /root/.iocage-amazon-dash
     sudo iocage exec amazon-dash sh /root/.iocage-amazon-dash/post_install.sh standard
 
 ---
