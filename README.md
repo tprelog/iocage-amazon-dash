@@ -1,5 +1,5 @@
 # iocage-amazon-dash
-Artifact file(s) for [Amazon-dash](http://docs.nekmo.org/amazon-dash/readme.html)
+Artifact file(s) for [Amazon Dash](http://docs.nekmo.org/amazon-dash/readme.html)
 
 ---
 ## iocage-plugin-amazon-dash
