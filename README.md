@@ -41,6 +41,5 @@ Artifact file(s) for [Amazon Dash](http://docs.nekmo.org/amazon-dash/readme.html
     +-----+----------------+------+-------+----------+-----------------+---------------------+-----+----------+
 
 
-Tested on FreeNAS-11.2-RC2  
+Tested on FreeNAS-11.2-U1  
 More information about [iocage plugins](https://doc.freenas.org/11.2/plugins.html) and [iocage jails](https://doc.freenas.org/11.2/jails.html) can be found in the [FreeNAS guide](https://doc.freenas.org/11.2/intro.html#introduction)  
-This script should also still work with FreeNAS 11.1
