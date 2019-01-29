@@ -40,16 +40,17 @@ load_rc_config ${name}
 : ${amazondash_group:="wheel"}
 : ${amazondash_config:="/etc/amazon-dash.yml"}
 : ${amazondash_arg:=""}
+: ${amazondash_locale:="en_US.UTF-8"}
 
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG="${amazondash_locale}"
+export LC_ALL="${amazondash_locale}"
 
 command="/usr/sbin/daemon"
 
 start_precmd=${name}_precmd
 amazondash_precmd()
 {
-    rc_flags="-f -u ${amazondash_user} -P ${pidfile} -p ${pidfile_child} /usr/local/bin/amazon-dash run ${amazondash_arg} --config ${amazondash_config} ${rc_flags}"
+    rc_flags="-f -o ${logfile} -u ${amazondash_user} -P ${pidfile} -p ${pidfile_child} /usr/local/bin/amazon-dash run ${amazondash_arg} --config ${amazondash_config} ${rc_flags}"
 
     if [ ! -e "${pidfile_child}" ]; then
             install -g ${amazondash_group} -o ${amazondash_user} -- /dev/null "${pidfile_child}";
@@ -63,7 +64,7 @@ amazondash_precmd()
         rm -f -- "${logfile}"
     fi
     
-    install -g ${amazon-dash_group} -o ${amazon-dash_user} -- /dev/null "${logfile}";
+    install -g ${amazondash_group} -o ${amazondash_user} -- /dev/null "${logfile}";
 }
 
 stop_postcmd=${name}_postcmd
