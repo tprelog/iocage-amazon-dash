@@ -32,6 +32,7 @@ rcvar=${name}_enable
 
 pidfile_child="/var/run/${name}.pid"
 pidfile="/var/run/${name}_daemon.pid"
+logfile="/var/log/${name}_daemon.log"
 
 load_rc_config ${name}
 : ${amazondash_enable:="NO"}
@@ -57,6 +58,12 @@ amazondash_precmd()
     if [ ! -e "${pidfile}" ]; then
             install -g ${amazondash_group} -o ${amazondash_user} -- /dev/null "${pidfile}";
     fi
+    
+    if [ -e "${logfile}" ]; then
+        rm -f -- "${logfile}"
+    fi
+    
+    install -g ${amazon-dash_group} -o ${amazon-dash_user} -- /dev/null "${logfile}";
 }
 
 stop_postcmd=${name}_postcmd
