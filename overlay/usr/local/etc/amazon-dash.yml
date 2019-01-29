@@ -29,8 +29,9 @@ devices:
   18:74:2e:62:c1:87: 
     name: Fairy
     homeassistant: homeassistant.local  # Address to the hass server
-    event: toggle_kitchen_light  # Event name to send
-    access: V96933UoA0qwXvMbignby # Legacy api-key
+    event: toggle_kitchen_light     # Event name to send
+    access: V96933UoA0qwXvMbignby   # Legacy api-key (recommend you use new access_token instead!)
+    #access_token:                  # Long live access token
 
    ## Example of how to execute a Openhab event
 #  18:74:2E:87:01:F2:
