@@ -15,5 +15,8 @@
 
 - control amazon-dash service:
     service amazon-dash [start|stop|restart|status]
+    
+- view service log:
+    cat /var/log/amazondash_daemon.log
 
 ------------------------------------------------------
