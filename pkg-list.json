@@ -2,6 +2,7 @@
     "pkgs": [
     "devel/git",
     "shells/bash",
+    "security/ca_root_nss",
     "lang/python36",
     "security/sudo"
     ]

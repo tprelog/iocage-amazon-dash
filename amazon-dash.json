@@ -5,6 +5,7 @@
   "pkgs": [
     "shells/bash",
     "lang/python36",
+    "security/ca_root_nss",
     "security/sudo"
     ],
   "packagesite": "http://pkg.FreeBSD.org/${ABI}/quarterly",
